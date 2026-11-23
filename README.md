@@ -72,11 +72,59 @@ ADMIN_PASSWORD="كلمة-مرور-قوية" PORT=8080 node server.js
 من تبويب «رموز QR» حدّد عدد الطاولات (ويمكنك تحديد رابط الموقع `baseUrl`). كل رمز يفتح القائمة برقم الطاولة (`/?table=3`).
 إن تركت الرابط فارغا فسيُستعمل عنوان الموقع الذي فُتحت منه اللوحة، لذلك **افتح اللوحة من الدومين النهائي** قبل طباعة الرموز.
 
-## النشر على سيرفر
+## النشر على الإنترنت
 
-1. ارفع المجلد كاملا وشغّل `node server.js` (يُفضّل عبر `pm2` أو `systemd` ليعمل دائما).
-2. ضع الموقع خلف **HTTPS** (Nginx أو Caddy كـ reverse proxy إلى المنفذ `PORT`)، وهذا ضروري لحماية كلمة مرور الأدمن ولتفعيل Service Worker.
-3. احتفظ بنسخة احتياطية دورية من المجلدين `data/` و `public/uploads/`.
+> **GitHub Pages لا يصلح لهذا المشروع**: Pages يقدّم ملفات ثابتة فقط، ومشروعنا خادم Node.js يوفّر `/api/menu` و`/api/orders` ورفع الصور وحماية لوحة التحكم. الصفحة ستُفتح لكن القائمة والطلبات لن تعمل. لذلك انشر المشروع على منصّة تشغّل Node.
+
+### الخيار 1 — Render (الأسهل، مجاني)
+
+1. سجّل في <https://render.com> بحساب GitHub.
+2. **New +** ← **Web Service** ← اختر المستودع `digital-menu`.
+3. الإعدادات:
+   - Language / Runtime: **Node**
+   - Build Command: `echo "no build step"` (لا توجد تبعيات)
+   - Start Command: `node server.js`
+   - Instance Type: **Free**
+4. **Create Web Service** وانتظر دقيقة، ستحصل على رابط مثل `https://digital-menu-xxxx.onrender.com`.
+5. افتح `/admin/` بكلمة المرور الافتراضية `admin123` ثم **غيّرها فورًا** من الإعدادات.
+6. اضبط `baseUrl` في الإعدادات على الرابط النهائي ثم اطبع رموز QR.
+
+بدلاً من الإعداد اليدوي يمكن استخدام الملف الجاهز `render.yaml` عبر **New + ← Blueprint**.
+
+**تنبيهان مهمان للخطة المجانية**
+- الخدمة «تنام» بعد نحو 15 دقيقة خمول، وأول زيارة بعدها تستغرق 20–50 ثانية.
+- نظام الملفات مؤقت: الطلبات وكلمة المرور والصور المرفوعة قد تُفقد عند إعادة النشر أو إعادة تشغيل الخدمة. للحفظ الدائم أضف **Disk** (خطة Starter) واضبط مساره على `/opt/render/project/src/data`، واحتفظ بنسخة احتياطية دورية من لوحة التحكم ← الإعدادات ← «نسخة احتياطية».
+
+### الخيار 2 — Railway أو Koyeb
+
+- **Railway**: New Project ← Deploy from GitHub ← اختر المستودع؛ يكتشف Node تلقائيًا ويشغّل `npm start`. أضف Volume على `/app/data` لحفظ الطلبات.
+- **Koyeb**: Create Service ← GitHub ← Build: Buildpack ← Run: `node server.js`، وأضف Volume على `/app/data`.
+
+### الخيار 3 — سيرفر خاص (VPS) مع دومين
+
+```bash
+git clone https://github.com/Youssefidry/digital-menu.git
+cd digital-menu
+npm i -g pm2
+pm2 start server.js --name menu
+pm2 save && pm2 startup
+```
+
+ثم ضع Nginx (أو Caddy) كـ reverse proxy إلى المنفذ `3000` مع شهادة HTTPS من `certbot` — HTTPS ضروري لحماية كلمة مرور اللوحة ولتفعيل Service Worker. واحتفظ بنسخة احتياطية دورية من `data/` و`public/uploads/`.
+
+### تشغيل عبر Docker
+
+```bash
+docker build -t digital-menu .
+docker run -d -p 3000:3000 -v "$PWD/data:/app/data" -v "$PWD/public/uploads:/app/public/uploads" --name menu digital-menu
+```
+
+### دومين خاص
+
+- في Render: Settings ← Custom Domain ← أضف نطاقك واتبع تعليمات CNAME.
+- بعد ربط الدومين افتح اللوحة منه، اضبط `baseUrl`، ثم أعد طباعة رموز QR حتى تشير إلى العنوان الجديد.
+
+> ملاحظة: المستودع عام (Public) لكن **بيانات التشغيل لا تُرفع**: `data/auth.json` و`data/orders.json` مستثناة في `.gitignore`، لذلك كلمة مرور كل تثبيت تبقى خاصة به.
 
 ## هيكل المشروع
 

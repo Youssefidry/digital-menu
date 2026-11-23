@@ -1,0 +1,9 @@
+.git
+.gitignore
+.github
+node_modules
+data/orders.json
+data/orders-archive.json
+data/auth.json
+*.log
+*.zip

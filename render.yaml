@@ -1,0 +1,17 @@
+# ملف نشر تلقائي على Render (render.com)
+# New + > Blueprint > اختر المستودع، أو استخدم New > Web Service يدويًا بنفس الإعدادات.
+services:
+  - type: web
+    name: digital-menu
+    runtime: node
+    plan: free
+    buildCommand: echo "no build step"
+    startCommand: node server.js
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+    # لحفظ الطلبات والصور بشكل دائم أضف قرصًا (Starter) واربطه بهذين المسارين:
+    # disk:
+    #   name: menu-data
+    #   mountPath: /opt/render/project/src/data
+    #   sizeGB: 1
