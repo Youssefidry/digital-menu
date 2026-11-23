@@ -1,0 +1,5 @@
+lib/qrcode/ - QRCode for JavaScript, Copyright (c) 2009 Kazuhiko Arase, MIT license.
+(via qrcode-terminal, Apache-2.0). "QR Code" is a registered trademark of DENSO WAVE INCORPORATED.
+Font: Tajawal (SIL Open Font License 1.1), self-hosted subset in public/fonts/.
+Map tiles: (c) OpenStreetMap contributors, ODbL - loaded directly from tile.openstreetmap.org.
+Geocoding: Nominatim (OSM), proxied by the server with a descriptive User-Agent and caching.

@@ -1,0 +1,222 @@
+{
+  "settings": {
+    "name": "Amigo Tacos",
+    "tagline": "مأكولات مغربية أصيلة تُحضَّر طازجة كل يوم",
+    "currency": "د.م",
+    "phone": "0522 00 00 00",
+    "whatsapp": "+212642554471",
+    "instagram": "@Youssefidry",
+    "facebook": "@Youssefidry",
+    "languages": "العربية · Français · English",
+    "hours": "كل يوم من 12:00 إلى 23:00",
+    "address": "شارع محمد الخامس، الدار البيضاء",
+    "orderNote": "الطلب يُحضَّر بعد التأكيد، وسنبدأ التحضير فور استلامه.",
+    "ordersEnabled": true,
+    "showPrices": true,
+    "showUnavailable": true,
+    "color": "#f56a32",
+    "layout": "list",
+    "logo": "/uploads/bedd476dcd965210.png",
+    "tables": 12,
+    "baseUrl": "",
+    "deliveryFee": 15,
+    "minOrder": 40,
+    "prepTime": "25–35 دقيقة",
+    "payments": "نقدًا عند الاستلام · تحويل بنكي",
+    "theme": "warm",
+    "themeAccent": ""
+  },
+  "categories": [
+    {
+      "id": "c1",
+      "name": "المقبلات",
+      "visible": true
+    },
+    {
+      "id": "c2",
+      "name": "الأطباق الرئيسية",
+      "visible": true
+    },
+    {
+      "id": "c3",
+      "name": "الحلويات",
+      "visible": true
+    },
+    {
+      "id": "c4",
+      "name": "المشروبات",
+      "visible": true
+    }
+  ],
+  "dishes": [
+    {
+      "id": "d1",
+      "name": "حريرة مغربية",
+      "desc": "شوربة العدس والحمص بالطماطم والتوابل، تُقدَّم ساخنة مع الليمون.",
+      "price": 25,
+      "category": "c1",
+      "image": "/uploads/a897884cf7228e8b.svg",
+      "available": true,
+      "ingredients": [
+        "عدس",
+        "حمص",
+        "طماطم",
+        "كزبرة"
+      ]
+    },
+    {
+      "id": "d2",
+      "name": "بريوات بالجبن",
+      "desc": "أصابع مقرمشة محشوة بالجبن الطازج والبقدونس، مع صلصة حارة خفيفة.",
+      "price": 35,
+      "category": "c1",
+      "image": "/uploads/82981cc2774b9b4c.svg",
+      "available": true,
+      "ingredients": [
+        "جبن",
+        "بقدونس",
+        "عجين ورقة"
+      ]
+    },
+    {
+      "id": "d3",
+      "name": "سلطة مغربية",
+      "desc": "طماطم، فلفل أخضر، بصل وتونة، بتوابل مغربية وزيت الزيتون.",
+      "price": 30,
+      "category": "c1",
+      "image": "/uploads/59cc1365b2a8b789.svg",
+      "available": true,
+      "ingredients": [
+        "طماطم",
+        "فلفل",
+        "تونة",
+        "زيتون"
+      ]
+    },
+    {
+      "id": "d4",
+      "name": "طاجين لحم بالبرقوق",
+      "desc": "لحم غنم طري مطهو ببطء مع البرقوق واللوز والسمسم.",
+      "price": 95,
+      "category": "c2",
+      "image": "/uploads/e0a264b46ec66ace.svg",
+      "available": true,
+      "ingredients": [
+        "لحم غنم",
+        "برقوق",
+        "لوز",
+        "سمسم"
+      ]
+    },
+    {
+      "id": "d5",
+      "name": "كسكس بالخضر",
+      "desc": "كسكس مبخَّر بالخضر الموسمية ومرق التوابل، يكفي شخصين.",
+      "price": 80,
+      "category": "c2",
+      "image": "/uploads/4b1c59707495f1e7.svg",
+      "available": true,
+      "ingredients": [
+        "كسكس",
+        "جزر",
+        "كوسا",
+        "حمص"
+      ]
+    },
+    {
+      "id": "d6",
+      "name": "دجاج مشرمل",
+      "desc": "دجاج متبَّل بالشرمولة والمخللات، يُقدَّم مع البطاطس المقلية.",
+      "price": 70,
+      "category": "c2",
+      "image": "/uploads/22f31936eedf6820.svg",
+      "available": true,
+      "ingredients": [
+        "دجاج",
+        "شرمولة",
+        "بطاطس"
+      ]
+    },
+    {
+      "id": "d7",
+      "name": "سمك مشوي",
+      "desc": "سمك طازج من الصيد اليومي، مشوي بالشرمولة مع سلطة خضراء.",
+      "price": 90,
+      "category": "c2",
+      "image": "/uploads/9e8a1f24b1121fba.svg",
+      "available": true,
+      "ingredients": [
+        "سمك",
+        "شرمولة",
+        "ليمون"
+      ]
+    },
+    {
+      "id": "d8",
+      "name": "بغرير بالعسل",
+      "desc": "فطائر مغربية إسفنجية تُقدَّم مع العسل والزبدة الطازجة.",
+      "price": 30,
+      "category": "c3",
+      "image": "/uploads/aa965ca4babd9d2d.svg",
+      "available": true,
+      "ingredients": [
+        "دقيق",
+        "عسل",
+        "زبدة"
+      ]
+    },
+    {
+      "id": "d9",
+      "name": "كعب غزال",
+      "desc": "معمول باللوز ومعطَّر بماء الزهر، قطعتان لكل طلب.",
+      "price": 28,
+      "category": "c3",
+      "image": "/uploads/6f76a8ef0141c15e.svg",
+      "available": true,
+      "ingredients": [
+        "لوز",
+        "ماء الزهر",
+        "قرفة"
+      ]
+    },
+    {
+      "id": "d10",
+      "name": "شاي بالنعناع",
+      "desc": "شاي أخضر مغربي بالنعناع الطازج، يُقدَّم في براد تقليدي.",
+      "price": 15,
+      "category": "c4",
+      "image": "/uploads/3ea3e88228aa28a8.svg",
+      "available": true,
+      "ingredients": [
+        "شاي أخضر",
+        "نعناع",
+        "سكر"
+      ]
+    },
+    {
+      "id": "d11",
+      "name": "عصير برتقال طازج",
+      "desc": "برتقال معصور عند الطلب، بدون سكر مضاف.",
+      "price": 20,
+      "category": "c4",
+      "image": "/uploads/6fc4f25eb3989bd9.svg",
+      "available": true,
+      "ingredients": [
+        "برتقال"
+      ]
+    },
+    {
+      "id": "d12",
+      "name": "قهوة بالحليب",
+      "desc": "قهوة إسبريسو مع حليب مبخَّر.",
+      "price": 18,
+      "category": "c4",
+      "image": "/uploads/a8de0e6a4007c8a7.svg",
+      "available": true,
+      "ingredients": [
+        "قهوة",
+        "حليب"
+      ]
+    }
+  ]
+}

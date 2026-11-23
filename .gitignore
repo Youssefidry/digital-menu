@@ -1,0 +1,17 @@
+# بيانات التشغيل (خاصة بكل تثبيت) — لا تُرفع
+data/auth.json
+data/orders.json
+data/orders-archive.json
+
+# التبعيات والسجلات
+node_modules/
+npm-debug.log*
+server.log
+*.log
+
+# ملفات النظام والمحرر
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

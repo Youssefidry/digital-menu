@@ -1,0 +1,22 @@
+{
+  "name": "digital-menu",
+  "version": "1.5.0",
+  "description": "قائمة طعام رقمية متجاوبة مع لوحة تحكم كاملة - Responsive digital restaurant menu with admin panel (no dependencies)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "keywords": [
+    "digital-menu",
+    "restaurant",
+    "qr-menu",
+    "arabic",
+    "rtl",
+    "pwa"
+  ]
+}
