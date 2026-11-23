@@ -16,12 +16,12 @@ html_handling = "none"
 [[d1_databases]]
 binding = "DB"
 database_name = "digital-menu"
-database_id = "00000000-0000-0000-0000-000000000000"
+database_id = "b88cd1c8-5b41-4d7f-8957-be2d40dd3300"
 migrations_dir = "migrations"
 
 [[kv_namespaces]]
 binding = "UPLOADS"
-id = "00000000000000000000000000000000"
+id = "b037f77002494bfc8445663f511da67b"
 
 [observability]
 enabled = true
