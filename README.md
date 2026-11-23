@@ -95,12 +95,37 @@ ADMIN_PASSWORD="كلمة-مرور-قوية" PORT=8080 node server.js
 - الخدمة «تنام» بعد نحو 15 دقيقة خمول، وأول زيارة بعدها تستغرق 20–50 ثانية.
 - نظام الملفات مؤقت: الطلبات وكلمة المرور والصور المرفوعة قد تُفقد عند إعادة النشر أو إعادة تشغيل الخدمة. للحفظ الدائم أضف **Disk** (خطة Starter) واضبط مساره على `/opt/render/project/src/data`، واحتفظ بنسخة احتياطية دورية من لوحة التحكم ← الإعدادات ← «نسخة احتياطية».
 
-### الخيار 2 — Railway أو Koyeb
+### الخيار 2 — Cloudflare Workers (نسخة كاملة من الخادم)
+
+فرع `cloudflare-workers` يحتوي نسخة تعمل **بالكامل** على Cloudflare: نفس الواجهة، نفس لوحة التحكم، نفس الـ API — لكن بدون Node.js. التخزين: **D1** لقاعدة البيانات (القائمة، الإعدادات، الطلبات، الجلسات) و**KV** للصور المرفوعة.
+
+```bash
+git clone https://github.com/Youssefidry/digital-menu.git
+cd digital-menu
+git checkout cloudflare-workers
+
+npx wrangler login                       # يفتح المتصفح لتأكيد الحساب
+npx wrangler d1 create digital-menu      # انسخ database_id إلى wrangler.toml
+npx wrangler kv namespace create UPLOADS # انسخ id إلى wrangler.toml
+npx wrangler d1 execute digital-menu --remote --file=migrations/0001_init.sql
+npx wrangler deploy
+```
+
+بعد النشر تحصل على رابط `https://digital-menu.<اسم-حسابك>.workers.dev`، وتفتح لوحة التحكم على `/admin/` بكلمة المرور `admin123` ثم تغيّرها فورًا، وتضبط `baseUrl` ثم تطبع رموز QR.
+
+- **لا تنام الخدمة** ولا تحتاج قرصًا دائمًا، والبيانات تبقى محفوظة في D1.
+- **الأمان**: كلمة المرور تُخزَّن بـ PBKDF2-SHA256 مع ملح عشوائي، الجلسات في D1 لمدة 12 ساعة، تحديد معدل الطلبات، ورؤوس CSP/HSTS.
+- **الدومين الخاص**: Workers ← Settings ← Domains & Routes ← Add custom domain.
+- **تحديث لاحقًا**: `npx wrangler deploy` فقط.
+- **حدود الخطة المجانية**: 100 ألف طلب يوميًا، D1 بحجم 5GB، KV بـ 100 ألف قراءة يوميًا — أكثر من كافية لمطعم.
+- أول تشغيل يستخدم `data/menu.json` كبيانات أولية، وأي تعديل من لوحة التحكم يُحفظ في D1.
+
+### الخيار 3 — Railway أو Koyeb
 
 - **Railway**: New Project ← Deploy from GitHub ← اختر المستودع؛ يكتشف Node تلقائيًا ويشغّل `npm start`. أضف Volume على `/app/data` لحفظ الطلبات.
 - **Koyeb**: Create Service ← GitHub ← Build: Buildpack ← Run: `node server.js`، وأضف Volume على `/app/data`.
 
-### الخيار 3 — سيرفر خاص (VPS) مع دومين
+### الخيار 4 — سيرفر خاص (VPS) مع دومين
 
 ```bash
 git clone https://github.com/Youssefidry/digital-menu.git

@@ -1,0 +1,27 @@
+# نشر القائمة على Cloudflare Workers
+# بعد إنشاء قاعدة D1 ومساحة KV استبدل المعرّفات أدناه (انظر README).
+
+name = "digital-menu"
+main = "worker/index.js"
+compatibility_date = "2025-11-01"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+# كل الطلبات تمر عبر الـ Worker (لحقن SEO وحماية الرؤوس وخدمة الصور المرفوعة)
+run_worker_first = true
+# لا تُجرِ تحويلات تلقائية للملفات (.html) — المسارات تُحل داخل الـ Worker
+html_handling = "none"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "digital-menu"
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"
+
+[[kv_namespaces]]
+binding = "UPLOADS"
+id = "00000000000000000000000000000000"
+
+[observability]
+enabled = true

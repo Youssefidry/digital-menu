@@ -1,10 +1,14 @@
 {
   "name": "digital-menu",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "قائمة طعام رقمية متجاوبة مع لوحة تحكم كاملة - Responsive digital restaurant menu with admin panel (no dependencies)",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "cf:dev": "npx wrangler@4 dev",
+    "cf:deploy": "npx wrangler@4 deploy",
+    "cf:db:init": "npx wrangler@4 d1 execute digital-menu --remote --file=migrations/0001_init.sql",
+    "cf:db:init:local": "npx wrangler@4 d1 execute digital-menu --local --file=migrations/0001_init.sql"
   },
   "engines": {
     "node": ">=18"
