@@ -12,7 +12,7 @@
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'Tajawal','Segoe UI',Tahoma,Arial,sans-serif;font-size:16px;line-height:1.5;overflow-x:hidden}
+body{margin:0;background-color:var(--bg);background-image:radial-gradient(ellipse 850px 560px at 88% -6%,rgba(194,65,12,.07),transparent 68%),radial-gradient(ellipse 760px 520px at 0% 40%,rgba(194,65,12,.04),transparent 70%),linear-gradient(180deg,#FFFCF7 0%,var(--bg) 46%,#F7F2E9 100%);color:var(--ink);font-family:'Tajawal','Segoe UI',Tahoma,Arial,sans-serif;font-size:16px;line-height:1.5;overflow-x:hidden}
 body.locked{overflow:hidden}
 button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
@@ -67,7 +67,7 @@ textarea.input{padding:10px 12px;min-height:84px;resize:vertical}
 .dish{display:flex;gap:14px;background:var(--card);border:1px solid var(--line2);border-radius:var(--radius);padding:12px;text-align:start;width:100%;cursor:pointer}
 .dish:hover{border-color:var(--line)}
 .grid .dish{flex-direction:column;gap:10px}
-.thumb{width:96px;height:96px;border-radius:14px;background:var(--ph1) center/cover no-repeat;flex:none;position:relative;overflow:hidden}
+.thumb{width:96px;height:96px;border-radius:14px;background-color:var(--ph1);background-position:center 56%;background-size:180% auto;background-repeat:no-repeat;flex:none;position:relative;overflow:hidden}
 .grid .thumb{width:100%;height:0;padding-top:62%}
 .thumb .ph{position:absolute;inset:0;display:grid;place-items:center;font-weight:800;font-size:26px;color:#fff;background:linear-gradient(135deg,var(--ph1),var(--ph2))}
 .grid .thumb .ph{position:absolute;inset:0;font-size:34px}
@@ -104,7 +104,7 @@ textarea.input{padding:10px 12px;min-height:84px;resize:vertical}
 .qty{display:flex;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;flex:none}
 .qty button{width:44px;height:52px;border:0;background:transparent;font-size:22px}
 .qty span{min-width:30px;text-align:center;font-weight:700}
-.page{position:fixed;inset:0;background:var(--bg);z-index:30;overflow:auto;-webkit-overflow-scrolling:touch}
+.page{position:fixed;inset:0;background-color:var(--bg);background-image:radial-gradient(ellipse 850px 560px at 88% -6%,rgba(194,65,12,.07),transparent 68%),radial-gradient(ellipse 760px 520px at 0% 40%,rgba(194,65,12,.04),transparent 70%),linear-gradient(180deg,#FFFCF7 0%,var(--bg) 46%,#F7F2E9 100%);z-index:30;overflow:auto;-webkit-overflow-scrolling:touch}
 .page .app{padding-bottom:calc(180px + env(safe-area-inset-bottom))}
 .cart-head{display:flex;align-items:center;gap:10px;padding:16px 0 8px;flex-wrap:wrap}
 .cart-head h1{margin:0;font-size:clamp(20px,5vw,26px);font-weight:800}
@@ -271,6 +271,7 @@ html[data-theme=noir]{
   --ph1:#3A2E26;--ph2:#6B4A31;--map-bg:#1B1614;
   --toolbar-fade:rgba(20,17,16,.94);--foot-fade:rgba(20,17,16,0);
 }
+html[data-theme=noir] body,html[data-theme=noir] .page{background-color:var(--bg);background-image:radial-gradient(ellipse 980px 650px at 88% -8%,rgba(173,179,0,.11),transparent 66%),radial-gradient(ellipse 820px 600px at 0% 38%,rgba(194,65,12,.09),transparent 68%),linear-gradient(180deg,#1A1612 0%,var(--bg) 48%,#100D0B 100%)}
 html[data-theme=noir] .resto-card{background:linear-gradient(180deg,#221B17 0%,#1A1512 100%)}
 html[data-theme=noir] .social{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.13)}
 html[data-theme=noir] .social.wa{background:rgba(31,175,84,.12);border-color:rgba(31,175,84,.3)}
@@ -292,6 +293,7 @@ html[data-theme=mint]{
   --ph1:#CFE3DA;--ph2:#6E9B8B;--map-bg:#E7EFEC;
   --toolbar-fade:rgba(243,247,246,.94);--foot-fade:rgba(243,247,246,0);
 }
+html[data-theme=mint] body,html[data-theme=mint] .page{background-color:var(--bg);background-image:radial-gradient(ellipse 1050px 720px at 88% -8%,rgba(178,211,195,.28),transparent 66%),radial-gradient(ellipse 900px 640px at 4% 2%,rgba(255,231,205,.3),transparent 68%),linear-gradient(180deg,#F6FAF8 0%,var(--bg) 54%,#EDF4F1 100%)}
 html[data-theme=mint] .resto-card{border-radius:20px}
 html[data-theme=mint] .pill,html[data-theme=mint] .chip,html[data-theme=mint] .info-chip{border-radius:12px}
 html[data-theme=mint] .dish{border-radius:var(--radius)}

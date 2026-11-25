@@ -1,5 +1,5 @@
 /* Digital Menu service worker - offline shell with network-first updates */
-const CACHE = 'dm-v4';
+const CACHE = 'dm-v5';
 const SHELL = ['/', '/index.html', '/offline.html', '/css/app.css', '/js/customer.js', '/icon.svg', '/icon-192.png',
   '/manifest.webmanifest', '/fonts/fonts.css', '/fonts/arabic-400.woff2', '/fonts/latin-400.woff2'];
 const NET_FIRST = [/^\/$/, /^\/index\.html$/, /^\/css\//, /^\/js\//, /^\/admin\//, /^\/fonts\//];

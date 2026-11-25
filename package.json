@@ -1,6 +1,6 @@
 {
   "name": "digital-menu",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "قائمة طعام رقمية متجاوبة مع لوحة تحكم كاملة - Responsive digital restaurant menu with admin panel (no dependencies)",
   "main": "server.js",
   "scripts": {

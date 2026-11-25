@@ -156,7 +156,8 @@ function drawBar() {
   }
 }
 function chips() {
-  const all = [['all', 'الكل'], ...menu.categories.map(c => [c.id, c.name])];
+  const visibleCategories = menu.categories.filter(c => menu.dishes.some(d => d.category === c.id));
+  const all = [['all', 'الكل'], ...visibleCategories.map(c => [c.id, c.name])];
   chipsEl.replaceChildren(...all.map(([id, name]) => {
     const n = id === 'all' ? menu.dishes.length : menu.dishes.filter(d => d.category === id).length;
     return h('button', { class: 'chip', 'data-cat': id, 'aria-pressed': String(cat === id), onclick: e => { cat = id; syncChips(); drawList(); e.currentTarget.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' }); } }, name, h('b', {}, n));
@@ -224,8 +225,7 @@ function render() {
         h('div', { class: 'head-meta' },
           table ? h('span', { class: 'pill' }, svg(ICON.plate, 18), 'طاولة ' + table) : null,
           S.ordersEnabled ? h('span', { class: 'pill beacon' }, '● الطلبات مفتوحة') : h('span', { class: 'pill' }, 'الطلبات متوقفة'))),
-      contact,
-      S.languages ? h('div', { class: 'langs' }, h('span', { class: 'muted' }, 'نتحدث: '), S.languages) : null),
+      contact),
     bannerEl,
     toolbar,
     listEl,
